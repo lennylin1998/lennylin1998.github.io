@@ -14,6 +14,12 @@
 	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
 	--box-shadow: 0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
 		0 16px 32px rgba(var(--gray), 33%);
+	--theme-bg: #fff;
+	--theme-text: #000;
+	--theme-accent: #2337ff;
+	--theme-divider: #e0e0e0;
+	--gray-200: #e5e7eb;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 @font-face {
 	font-family: 'Atkinson';
@@ -41,6 +47,7 @@ body {
 	color: rgb(var(--gray-dark));
 	font-size: 20px;
 	line-height: 1.7;
+	background-color: var(--theme-bg);
 }
 main {
 	width: 720px;
@@ -151,4 +158,44 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+/* Add these new styles at the end of the file */
+body.dark {
+	background: var(--theme-bg);
+	color: var(--theme-text);
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+	color: var(--theme-text);
+}
+
+body.dark code {
+	background-color: #333333;
+}
+
+body.dark a {
+	color: #a6a6a6;
+}
+
+body.dark a:hover {
+	color: #cccccc;
+}
+
+/* Disable transitions on page load */
+.preload * {
+	transition: none !important;
+}
+
+/* Update ThemeToggle styles */
+body.dark .sun { fill: transparent; }
+body.dark .moon { fill: white; }
+
+body.dark #themeToggle {
+	background: rgba(0, 0, 0, 0.4);
 }
