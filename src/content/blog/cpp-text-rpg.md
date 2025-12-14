@@ -1,9 +1,24 @@
 ---
 title: 'C++ Text-Based RPG'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'May 02 2023'
+description: 'Console adventure game showing systems-level problem solving.'
+type: 'project'
+role: 'Solo Developer'
+pubDate: '2023-05-02'
+startDate: '2023-01-15'
+endDate: '2023-04-30'
+githubRepo: 'https://github.com/lennylin1998/text-rpg'
 heroImage: '/text-based-rpg.jpeg'
+tags:
+  - 'c++'
+  - 'data-structures'
+  - 'cli'
 ---
+
+> **Type:** Project  
+> **Role:** Solo Developer  
+> **Timeline:** Jan 2023 — Apr 2023  
+> **Repository:** [github.com/lennylin1998/text-rpg](https://github.com/lennylin1998/text-rpg)  
+> **Tags:** `c++`, `data-structures`, `cli`
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 

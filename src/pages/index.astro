@@ -5,11 +5,27 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import SearchIsland from '../components/search/SearchIsland.tsx';
+import { formatDateRange } from '../utils/formatDateRange';
+import type { SearchEntry } from '../types/experience';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const workEntries = posts.filter((post) => post.data.type === 'work');
+const projectEntries = posts.filter((post) => post.data.type === 'project');
+
+const searchEntries: SearchEntry[] = posts.map((entry) => ({
+	id: entry.id,
+	url: `/blog/${entry.id}/`,
+	title: entry.data.title,
+	description: entry.data.description,
+	role: entry.data.role,
+	type: entry.data.type,
+	tags: entry.data.tags ?? [],
+	dateRange: formatDateRange(entry.data.startDate, entry.data.endDate),
+}));
 ---
 
 <!doctype html>
@@ -96,21 +112,58 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		<main>
-			<section>
+			<section id="hero">
+				<h1>Turning student projects into polished production work.</h1>
+				<p>
+					All case studies live inside content collections, so updating experience is as simple as editing a
+					markdown file. Browse the work and project sections below or jump right into search.
+				</p>
+				<p>
+					<a href="https://drive.google.com/file/d/1nqoV3ki7hw5dYUTBXSkRJMuuM0nVehdy/view?usp=sharing" target="_blank"
+						>Download resume</a
+					>
+				</p>
+			</section>
+
+			<section id="search">
+				<h2>Search</h2>
+				<p>Filter by title, description, role, tags, and more without leaving this page.</p>
+				<SearchIsland client:load entries={searchEntries} />
+			</section>
+
+			<section id="work">
+				<h2>Work Experience</h2>
 				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
+					{workEntries.map((entry) => (
+						<li>
+							<a href={`/blog/${entry.id}/`}>
+								<img width={720} height={360} src={entry.data.heroImage} alt="" />
+								<h4 class="title">{entry.data.title}</h4>
+								<p class="date">
+									{entry.data.role ? `${entry.data.role} · ` : ''}
+									{formatDateRange(entry.data.startDate, entry.data.endDate)}
+								</p>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section id="projects">
+				<h2>Projects</h2>
+				<ul>
+					{projectEntries.map((entry) => (
+						<li>
+							<a href={`/blog/${entry.id}/`}>
+								<img width={720} height={360} src={entry.data.heroImage} alt="" />
+								<h4 class="title">{entry.data.title}</h4>
+								<p class="date">
+									{entry.data.role ? `${entry.data.role} · ` : ''}
+									{formatDateRange(entry.data.startDate, entry.data.endDate)}
+								</p>
+							</a>
+						</li>
+					))}
 				</ul>
 			</section>
 		</main>
@@ -118,5 +171,3 @@ const posts = (await getCollection('blog')).sort(
 		<ThemeToggle />
 	</body>
 </html>
-
-	

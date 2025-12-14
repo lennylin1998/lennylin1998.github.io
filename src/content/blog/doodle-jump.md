@@ -1,9 +1,26 @@
 ---
 title: 'Doodle Jump on Hack'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Dec 12 2023'
+description: 'Ported an arcade favorite into a responsive browser experience.'
+type: 'project'
+role: 'Frontend Engineer'
+pubDate: '2023-12-12'
+startDate: '2023-09-10'
+endDate: '2023-12-01'
+githubRepo: 'https://github.com/lennylin1998/doodle-jump'
+liveUrl: 'https://jump.lenny.dev'
 heroImage: '/doodle.jpg'
+tags:
+  - 'javascript'
+  - 'canvas'
+  - 'performance'
 ---
+
+> **Type:** Project  
+> **Role:** Frontend Engineer  
+> **Timeline:** Sep 2023 — Dec 2023  
+> **Repository:** [github.com/lennylin1998/doodle-jump](https://github.com/lennylin1998/doodle-jump)  
+> **Live URL:** [jump.lenny.dev](https://jump.lenny.dev)  
+> **Tags:** `javascript`, `canvas`, `performance`
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 

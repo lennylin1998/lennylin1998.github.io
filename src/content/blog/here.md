@@ -1,9 +1,23 @@
 ---
 title: 'Here@Illinois'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Aug 26 2024'
+description: 'Maintained a campus-wide marketing site with student-first UX improvements.'
+type: 'work'
+role: 'Frontend Developer'
+pubDate: '2024-08-26'
+startDate: '2024-06-01'
 heroImage: '/here-at-illinois.png'
+tags:
+  - 'astro'
+  - 'accessibility'
+  - 'uiux'
+liveUrl: 'https://here.illinois.edu'
 ---
+
+> **Type:** Work Experience  
+> **Role:** Frontend Developer  
+> **Timeline:** Jun 2024 — Present  
+> **Live URL:** [here.illinois.edu](https://here.illinois.edu)  
+> **Tags:** `astro`, `accessibility`, `uiux`
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 

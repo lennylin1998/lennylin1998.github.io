@@ -1,9 +1,26 @@
 ---
 title: 'Binox Variation'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Dec 10 2024'
+description: 'Rapid prototype for a puzzle platformer that highlights visual systems work.'
+type: 'project'
+role: 'Gameplay Engineer'
+pubDate: '2024-12-10'
+startDate: '2024-09-01'
+endDate: '2024-11-15'
+githubRepo: 'https://github.com/lennylin1998/binox-variation'
+liveUrl: 'https://binox.lenny.dev'
 heroImage: '/binox.png'
+tags:
+  - 'astro'
+  - 'canvas'
+  - 'gameplay'
 ---
+
+> **Type:** Project  
+> **Role:** Gameplay Engineer  
+> **Timeline:** Sep 2024 — Nov 2024  
+> **Repository:** [github.com/lennylin1998/binox-variation](https://github.com/lennylin1998/binox-variation)  
+> **Live URL:** [binox.lenny.dev](https://binox.lenny.dev)  
+> **Tags:** `astro`, `canvas`, `gameplay`
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
 
