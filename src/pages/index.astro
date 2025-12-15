@@ -5,9 +5,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
-import SearchIsland from '../components/search/SearchIsland.tsx';
+import Button from '../components/ui/Button.astro';
 import { formatDateRange } from '../utils/formatDateRange';
-import type { SearchEntry } from '../types/experience';
 import { Image } from 'astro:assets';
 
 const posts = (await getCollection('blog')).sort(
@@ -17,16 +16,32 @@ const posts = (await getCollection('blog')).sort(
 const workEntries = posts.filter((post) => post.data.type === 'work');
 const projectEntries = posts.filter((post) => post.data.type === 'project');
 
-const searchEntries: SearchEntry[] = posts.map((entry) => ({
-	id: entry.id,
-	url: `/blog/${entry.id}/`,
-	title: entry.data.title,
-	description: entry.data.description,
-	role: entry.data.role,
-	type: entry.data.type,
-	tags: entry.data.tags ?? [],
-	dateRange: formatDateRange(entry.data.startDate, entry.data.endDate),
-}));
+const filterGroups = [
+	{
+		label: 'Languages',
+		tags: ['Typescript', 'C/C++', 'Python', 'Kotlin', 'PHP', 'SQL', 'Javascript', 'Haskell', 'CSS', 'HTML'],
+	},
+	{
+		label: 'Frameworks',
+		tags: [
+			'React',
+			'Express',
+			'Node',
+			'Jest',
+			'Dockers',
+			'Google ADK',
+			'PHPUnit',
+			'Vue.js',
+			'Scikit-learn',
+			'PyTorch',
+			'Memcached',
+		],
+	},
+	{
+		label: 'Cloud Services',
+		tags: ['AWS', 'GCP', 'Cloud Run', 'Secret Manager', 'IAM'],
+	},
+];
 ---
 
 <!doctype html>
@@ -88,12 +103,78 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 				color: rgb(var(--gray));
 				text-align: left;
 			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
+			@media (hover: hover) {
+				ul li a:hover h4,
+				ul li a:hover .date {
+					color: rgb(var(--accent));
+				}
+				ul a:hover img {
+					box-shadow: var(--box-shadow);
+				}
 			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
+			.search-section {
+				margin-top: 3rem;
+			}
+			.filter-panel {
+				padding: 1.5rem;
+				border-radius: 18px;
+				background: rgba(var(--gray-light), 0.35);
+				border: 1px solid rgba(var(--gray), 0.15);
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+			.filter-panel__groups {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			.filter-group__label {
+				margin: 0 0 0.4rem 0;
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: rgb(var(--gray));
+			}
+			.filter-group__buttons {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+			}
+			.filter-button {
+				border: 1px solid rgba(var(--gray), 0.4);
+				background: white;
+				border-radius: 999px;
+				padding: 0.45rem 1rem;
+				font-size: 0.9rem;
+				cursor: pointer;
+				transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+			}
+			.filter-button.active {
+				background: rgb(var(--black));
+				color: white;
+				border-color: rgb(var(--black));
+			}
+			.filter-panel__message {
+				margin: 0;
+				font-size: 0.95rem;
+				color: rgb(var(--gray));
+			}
+			:global(.dark) .filter-panel {
+				background: rgba(255, 255, 255, 0.02);
+				border-color: rgba(255, 255, 255, 0.1);
+			}
+			:global(.dark) .filter-button {
+				background: rgba(255, 255, 255, 0.05);
+				color: white;
+			}
+			:global(.dark) .filter-button.active {
+				background: white;
+				color: #111;
+				border-color: white;
+			}
+			[data-keywords].is-hidden {
+				display: none !important;
 			}
 			@media (max-width: 720px) {
 				ul {
@@ -129,16 +210,38 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 			</section>
 
 			<section id="search">
-				<h2>Search</h2>
-				<p>Filter by title, description, role, tags, and more without leaving this page.</p>
-				<SearchIsland client:load entries={searchEntries} />
+				<h2>Filter by Skill</h2>
+				<p>Select a tag to highlight roles and projects that use that skillset.</p>
+				<div class="filter-panel">
+					<div class="filter-panel__groups">
+						{
+							filterGroups.map((group) => (
+								<div class="filter-group">
+									<p class="filter-group__label">{group.label}</p>
+									<div class="filter-group__buttons">
+										{group.tags.map((tag) => (
+											<Button class="filter-button" data-filter-button data-tag={tag}>
+												{tag}
+											</Button>
+										))}
+									</div>
+								</div>
+							))
+						}
+					</div>
+					<p class="filter-panel__message" data-filter-message>
+						Select a skill tag to highlight the matching experience cards below.
+					</p>
+				</div>
 			</section>
 
 			<section id="work">
 				<h2>Work Experience</h2>
 				<ul>
 					{workEntries.map((entry) => (
-						<li>
+						<li data-keywords={(entry.data.tags || [])
+							.map((tag) => tag.toLowerCase().replace(/\s+/g, '-'))
+							.join('|')}>
 							<a href={`/blog/${entry.id}/`}>
 								<Image
 									src={entry.data.heroImage}
@@ -162,7 +265,9 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 				<h2>Projects</h2>
 				<ul>
 					{projectEntries.map((entry) => (
-						<li>
+						<li data-keywords={(entry.data.tags || [])
+							.map((tag) => tag.toLowerCase().replace(/\s+/g, '-'))
+							.join('|')}>
 							<a href={`/blog/${entry.id}/`}>
 								<Image
 									src={entry.data.heroImage}
@@ -184,5 +289,99 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 		</main>
 		<Footer />
 		<ThemeToggle />
+		<script type="module">
+			const normalizeTag = (tag) => String(tag ?? '').trim().toLowerCase().replace(/\s+/g, '-');
+			const storageKey = 'portfolio-selected-tags';
+			const safeParse = (value) => {
+				try {
+					const parsed = JSON.parse(value ?? '[]');
+					return Array.isArray(parsed) ? parsed : [];
+				} catch {
+					return [];
+				}
+			};
+
+			const selectedTags = new Set();
+			safeParse(localStorage.getItem(storageKey)).forEach((tag) => selectedTags.add(tag));
+			const buttons = document.querySelectorAll('[data-filter-button]');
+			const cards = Array.from(document.querySelectorAll('[data-keywords]'));
+			const messageEl = document.querySelector('[data-filter-message]');
+
+			const persistSelections = () => {
+				if (selectedTags.size === 0) {
+					localStorage.removeItem(storageKey);
+				} else {
+					localStorage.setItem(storageKey, JSON.stringify(Array.from(selectedTags)));
+				}
+			};
+
+			const syncButtons = () => {
+				buttons.forEach((btn) => {
+					if (!(btn instanceof HTMLElement)) return;
+					const tag = btn.getAttribute('data-tag');
+					const isActive = tag ? selectedTags.has(tag) : false;
+					btn.classList.toggle('active', isActive);
+					btn.classList.toggle('astro-button--active', isActive);
+					btn.setAttribute('aria-pressed', String(isActive));
+				});
+			};
+
+			const renderResults = () => {
+				if (!messageEl) return;
+				if (selectedTags.size === 0) {
+					messageEl.textContent = 'Showing all experience.';
+					cards.forEach((card) => card.classList.remove('is-hidden'));
+					return;
+				}
+
+				const normalizedTags = Array.from(selectedTags).map((tag) => normalizeTag(tag));
+				let matchCount = 0;
+
+				cards.forEach((card) => {
+					const keywords = (card.getAttribute('data-keywords') || '').split('|').filter(Boolean);
+					const isMatch = normalizedTags.some((tag) => keywords.includes(tag));
+					card.classList.toggle('is-hidden', !isMatch);
+					if (isMatch) matchCount++;
+				});
+
+				if (matchCount === 0) {
+					messageEl.textContent = `No entries match ${Array.from(selectedTags).join(', ')} yet.`;
+				} else {
+					messageEl.textContent = `Showing ${matchCount} entr${matchCount === 1 ? 'y' : 'ies'} matching ${Array.from(
+						selectedTags,
+					).join(', ')}.`;
+				}
+			};
+
+			const toggleTag = (tag) => {
+				if (!tag) return;
+				if (selectedTags.has(tag)) {
+					selectedTags.delete(tag);
+				} else {
+					selectedTags.add(tag);
+				}
+				persistSelections();
+				syncButtons();
+				renderResults();
+			};
+
+			buttons.forEach((button) => {
+				button.addEventListener('click', () => {
+					const tag = button.getAttribute('data-tag') || '';
+					toggleTag(tag);
+				});
+			});
+
+			window.addEventListener('storage', (event) => {
+				if (event.key !== storageKey) return;
+				selectedTags.clear();
+				safeParse(event.newValue).forEach((tag) => selectedTags.add(tag));
+				syncButtons();
+				renderResults();
+			});
+
+			syncButtons();
+			renderResults();
+		</script>
 	</body>
 </html>

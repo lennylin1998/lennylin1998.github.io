@@ -87,8 +87,10 @@ b {
 a {
 	color: var(--accent);
 }
-a:hover {
-	color: var(--accent);
+@media (hover: hover) {
+	a:hover {
+		color: var(--accent);
+	}
 }
 p {
 	margin-bottom: 1em;
@@ -183,8 +185,10 @@ body.dark a {
 	color: #a6a6a6;
 }
 
-body.dark a:hover {
-	color: #cccccc;
+@media (hover: hover) {
+	body.dark a:hover {
+		color: #cccccc;
+	}
 }
 
 /* Disable transitions on page load */

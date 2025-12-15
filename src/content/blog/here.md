@@ -7,9 +7,12 @@ pubDate: '2024-08-26'
 startDate: '2024-06-01'
 heroImage: '/here-at-illinois.png'
 tags:
-  - 'astro'
-  - 'accessibility'
-  - 'uiux'
+  - 'Typescript'
+  - 'React'
+  - 'Node'
+  - 'AWS'
+  - 'CSS'
+  - 'HTML'
 liveUrl: 'https://here.illinois.edu'
 ---
 

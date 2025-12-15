@@ -9,9 +9,7 @@ endDate: '2023-04-30'
 githubRepo: 'https://github.com/lennylin1998/text-rpg'
 heroImage: '/text-based-rpg.jpeg'
 tags:
-  - 'c++'
-  - 'data-structures'
-  - 'cli'
+  - 'C/C++'
 ---
 
 > **Type:** Project  

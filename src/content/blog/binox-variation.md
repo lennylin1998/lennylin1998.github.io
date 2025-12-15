@@ -10,9 +10,9 @@ githubRepo: 'https://github.com/lennylin1998/binox-variation'
 liveUrl: 'https://binox.lenny.dev'
 heroImage: '/binox.png'
 tags:
-  - 'astro'
-  - 'canvas'
-  - 'gameplay'
+  - 'Python'
+  - 'CSS'
+  - 'HTML'
 ---
 
 > **Type:** Project  

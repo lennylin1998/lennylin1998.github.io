@@ -10,9 +10,9 @@ githubRepo: 'https://github.com/lennylin1998/doodle-jump'
 liveUrl: 'https://jump.lenny.dev'
 heroImage: '/doodle.jpg'
 tags:
-  - 'javascript'
-  - 'canvas'
-  - 'performance'
+  - 'Javascript'
+  - 'CSS'
+  - 'HTML'
 ---
 
 > **Type:** Project  
