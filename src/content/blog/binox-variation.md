@@ -1,33 +1,17 @@
 ---
 title: 'Binox Variation'
-description: 'Rapid prototype for a puzzle platformer that highlights visual systems work.'
+description: 'Rapid build a Binox puzzle variant game, play in terminal.'
 type: 'project'
-role: 'Gameplay Engineer'
+role: 'Team Lead/Contributor'
 pubDate: '2024-12-10'
 startDate: '2024-09-01'
 endDate: '2024-11-15'
 githubRepo: 'https://github.com/lennylin1998/binox-variation'
-liveUrl: 'https://binox.lenny.dev'
+# liveUrl: 'https://binox.lenny.dev'
 heroImage: '/binox.png'
 tags:
   - 'Python'
-  - 'CSS'
-  - 'HTML'
+  - 'Data Structure'
 ---
 
-> **Type:** Project  
-> **Role:** Gameplay Engineer  
-> **Timeline:** Sep 2024 — Nov 2024  
-> **Repository:** [github.com/lennylin1998/binox-variation](https://github.com/lennylin1998/binox-variation)  
-> **Live URL:** [binox.lenny.dev](https://binox.lenny.dev)  
-> **Tags:** `astro`, `canvas`, `gameplay`
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
-
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+The Binox course project started as a curiosity for me—I spent time browsing existing puzzles and solvers just to understand how people approached the problem before writing a single line of code. I built the original solver myself as a way to ground our ideas in something concrete, and that quickly shaped the team’s brainstorming around variants and rule twists. I naturally stepped into organizing the work: turning scattered ideas into an implementation plan, clarifying boundaries between components, and keeping everyone aligned as we built in parallel. When puzzle generation began taking far too long, it became clear that brute force wasn’t going to scale. I experimented with different approaches and ended up combining statistical insights with a backtracking-based method to shrink the search space dramatically. That moment—when a stalled system finally felt responsive—was one of the most satisfying parts of the project, and it reflected how I like to work: explore first, commit thoughtfully, and adjust when reality pushes back.

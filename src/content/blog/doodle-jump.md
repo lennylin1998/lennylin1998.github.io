@@ -1,33 +1,26 @@
 ---
 title: 'Doodle Jump on Hack'
-description: 'Ported an arcade favorite into a responsive browser experience.'
+description: 'Ported an arcade favorite into a Hack emulated computer, with window rendering.'
 type: 'project'
-role: 'Frontend Engineer'
+role: 'Team Lead/Contributor'
 pubDate: '2023-12-12'
 startDate: '2023-09-10'
 endDate: '2023-12-01'
-githubRepo: 'https://github.com/lennylin1998/doodle-jump'
-liveUrl: 'https://jump.lenny.dev'
+githubRepo: 'https://github.com/lennylin1998/Nand2Tetris-DoodleJump'
+# liveUrl: 'https://jump.lenny.dev'
 heroImage: '/doodle.jpg'
 tags:
-  - 'Javascript'
-  - 'CSS'
+  - 'Hack'
+  - 'Computer Architecture'
   - 'HTML'
+  - 'OOP'
 ---
 
-> **Type:** Project  
+<!-- > **Type:** Project  
 > **Role:** Frontend Engineer  
 > **Timeline:** Sep 2023 — Dec 2023  
-> **Repository:** [github.com/lennylin1998/doodle-jump](https://github.com/lennylin1998/doodle-jump)  
+> **Repository:** [github.com/lennylin1998/doodle-jump](https://github.com/lennylin1998/doodle-jump)
 > **Live URL:** [jump.lenny.dev](https://jump.lenny.dev)  
-> **Tags:** `javascript`, `canvas`, `performance`
+> **Tags:** `javascript`, `canvas`, `performance` -->
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
-
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+The Doodle Jump project came from an introductory computer architecture course, where we built a complete game on top of the Hack platform—working directly with registers, the ALU, CPU control, and raw screen and keyboard I/O. A big part of the challenge was getting comfortable with Hack’s low-level syntax while thinking carefully about how software behaves when hardware abstractions disappear. The screen, for example, has no layers and no colors—each pixel is either on or off—which made object rendering and collision detection far more involved than in a modern environment. Drawing sprites line by line was both slow and error-prone, especially as multiple objects started interacting. After a few false starts, I rethought the approach and converted game assets into bitmaps that could be written directly to memory, erasing and redrawing entire objects each frame. Leaning on the platform’s built-in bitmap operations turned out to be significantly faster and simpler, and it reshaped how I reasoned about performance under tight constraints. The project gave me an appreciation for how much modern tooling hides—and how satisfying it is to make something interactive when nothing is given for free.

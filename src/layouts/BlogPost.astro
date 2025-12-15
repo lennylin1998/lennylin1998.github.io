@@ -6,10 +6,26 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import { Image } from 'astro:assets';
+import { formatDateRange } from '../utils/formatDateRange';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const {
+	title,
+	description,
+	pubDate,
+	updatedDate,
+	heroImage,
+	type,
+	role,
+	startDate,
+	endDate,
+	githubRepo,
+	liveUrl,
+	tags = [],
+} = Astro.props;
+const dateRange = startDate ? formatDateRange(startDate, endDate) : null;
+const typeLabel = type ? (type === 'work' ? 'Work Experience' : 'Project') : 'Case Study';
 ---
 
 <html lang="en">
@@ -82,6 +98,47 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.hero-img.doodle {
 				object-position: 25% 0% !important;
 			}
+			.meta-panel {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+				gap: 1rem;
+				padding: 1.5rem;
+				border: 1px solid rgba(var(--gray), 0.3);
+				border-radius: 16px;
+				margin-bottom: 2rem;
+				background: rgba(var(--gray-light), 0.25);
+			}
+			.meta-item span {
+				display: block;
+				font-size: 0.8rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: rgb(var(--gray));
+				margin-bottom: 0.25rem;
+			}
+			.meta-links {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-top: 1rem;
+			}
+			.meta-links a {
+				text-decoration: none;
+				font-weight: 600;
+				color: rgb(var(--accent));
+			}
+			.tag-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-top: 1rem;
+			}
+			.tag-list span {
+				background: rgba(var(--gray-light), 0.6);
+				border-radius: 999px;
+				padding: 0.25rem 0.75rem;
+				font-size: 0.85rem;
+			}
 		</style>
 	</head>
 
@@ -117,6 +174,51 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 							<h1>{title}</h1>
 							<hr />
 						</div>
+						{(type || dateRange || role || pubDate) && (
+							<div class="meta-panel">
+								<div class="meta-item">
+									<span>Type</span>
+									<strong>{typeLabel}</strong>
+								</div>
+								{dateRange && (
+									<div class="meta-item">
+										<span>Date Range</span>
+										<strong>{dateRange}</strong>
+									</div>
+								)}
+								{role && (
+									<div class="meta-item">
+										<span>Role</span>
+										<strong>{role}</strong>
+									</div>
+								)}
+								<div class="meta-item">
+									<span>Published</span>
+									<strong><FormattedDate date={pubDate} /></strong>
+								</div>
+							</div>
+						)}
+						{(githubRepo || liveUrl) && (
+							<div class="meta-links">
+								{liveUrl && (
+									<a href={liveUrl} target="_blank" rel="noreferrer">
+										View Live
+									</a>
+								)}
+								{githubRepo && (
+									<a href={githubRepo} target="_blank" rel="noreferrer">
+										View Source
+									</a>
+								)}
+							</div>
+						)}
+						{tags.length > 0 && (
+							<div class="tag-list">
+								{tags.map((tag) => (
+									<span>{tag}</span>
+								))}
+							</div>
+						)}
 						<slot />
 					</div>
 				</article>

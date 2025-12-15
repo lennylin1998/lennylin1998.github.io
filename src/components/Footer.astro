@@ -5,8 +5,7 @@ const today = new Date();
 <footer id="connect">
 	Connect with me on LinkedIn or GitHub
 	<div class="social-links">
-		<a href="https://www.linkedin.com/in/your-profile" target="_blank">
-			<span class="sr-only">Follow on LinkedIn</span>
+		<a href="https://www.linkedin.com/in/lenny-yuliang-lin">
 			<svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32">
 				<path
 				fill="currentColor"
@@ -25,6 +24,7 @@ const today = new Date();
 		</a>
 	</div>
 </footer>
+<p class="footer-copy">&copy; {today.getFullYear()} Lenny Lin. All rights reserved.</p>
 <style>
 	footer {
 		padding: 2em 1em 6em 1em;
@@ -46,5 +46,11 @@ const today = new Date();
 		.social-links a:hover {
 			color: rgb(var(--gray-dark));
 		}
+	}
+	.footer-copy {
+		text-align: center;
+		color: rgb(var(--gray));
+		font-size: 0.9rem;
+		margin: 0 0 2em;
 	}
 </style>
