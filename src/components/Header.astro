@@ -54,6 +54,7 @@ import { SITE_TITLE } from '../consts';
 		<a href="#connect">Connect</a>
 	</div>
 </aside>
+<div class="drawer-overlay" data-drawer-overlay></div>
 <style>
 .site-header {
 	margin: 0;
@@ -65,7 +66,7 @@ import { SITE_TITLE } from '../consts';
 	align-items: center;
 	position: sticky;
 	top: 0;
-	z-index: 100;
+	z-index: 900;
 	transition: transform 0.25s ease;
 }
 h2 {
@@ -137,7 +138,7 @@ h2 {
 		transform: translateX(100%);
 		transition: transform 0.3s ease;
 		padding: 5rem 2rem 2rem;
-		z-index: 90;
+		z-index: 1100;
 		display: flex;
 	}
 	.drawer.open {
@@ -153,6 +154,19 @@ h2 {
 		font-size: 1.1rem;
 		color: rgb(var(--black));
 		text-decoration: none;
+	}
+	.drawer-overlay {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.35);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+		z-index: 1050;
+	}
+	.drawer-overlay.open {
+		opacity: 1;
+		pointer-events: auto;
 	}
 	@media (max-width: 900px) {
 		.internal-links {
@@ -260,9 +274,11 @@ h2 {
 	const drawer = document.querySelector('[data-drawer]');
 	const toggleButton = document.querySelector('.nav-toggle');
 	const navLinks = document.querySelectorAll('[data-drawer] a');
+	const drawerOverlay = document.querySelector('[data-drawer-overlay]');
 
 	const closeDrawer = () => {
 		drawer?.classList.remove('open');
+		drawerOverlay?.classList.remove('open');
 		toggleButton?.setAttribute('aria-expanded', 'false');
 	};
 
@@ -279,7 +295,16 @@ h2 {
 
 	toggleButton?.addEventListener('click', () => {
 		const isOpen = drawer?.classList.toggle('open');
+		if (isOpen) {
+			drawerOverlay?.classList.add('open');
+		} else {
+			drawerOverlay?.classList.remove('open');
+		}
 		toggleButton.setAttribute('aria-expanded', String(Boolean(isOpen)));
+	});
+
+	drawerOverlay?.addEventListener('click', () => {
+		closeDrawer();
 	});
 
 	navLinks.forEach((link) =>
@@ -290,6 +315,20 @@ h2 {
 
 	window.addEventListener('resize', () => {
 		if (window.innerWidth > 900) {
+			closeDrawer();
+		}
+	});
+
+	document.addEventListener('click', (event) => {
+		if (!drawer?.classList.contains('open')) return;
+		const target = event.target;
+		if (
+			target instanceof Node &&
+			drawer &&
+			!drawer.contains(target) &&
+			target !== toggleButton &&
+			!(target instanceof HTMLElement && target.closest('.nav-toggle'))
+		) {
 			closeDrawer();
 		}
 	});
