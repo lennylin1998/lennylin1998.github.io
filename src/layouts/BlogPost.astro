@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { Image } from 'astro:assets';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -91,12 +92,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<article>
 					{heroImage && (
 						<div class="hero-image">
-							<img 
-								width={1020} 
-								height={510} 
-								src={heroImage} 
-								alt="" 
+							<Image
+								width={1020}
+								height={510}
+								src={heroImage}
+								alt={title}
 								class={`hero-img ${heroImage.split('/').pop()?.split('.')[0]}`}
+								loading="eager"
 							/>
 						</div>
 					)}

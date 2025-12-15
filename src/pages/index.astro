@@ -8,6 +8,7 @@ import { getCollection } from 'astro:content';
 import SearchIsland from '../components/search/SearchIsland.tsx';
 import { formatDateRange } from '../utils/formatDateRange';
 import type { SearchEntry } from '../types/experience';
+import { Image } from 'astro:assets';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -80,10 +81,12 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 				margin: 0;
 				color: rgb(var(--black));
 				line-height: 1;
+				text-align: left;
 			}
 			.date {
 				margin: 0;
 				color: rgb(var(--gray));
+				text-align: left;
 			}
 			ul li a:hover h4,
 			ul li a:hover .date {
@@ -120,7 +123,7 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 				</p>
 				<p>
 					<a href="https://drive.google.com/file/d/1nqoV3ki7hw5dYUTBXSkRJMuuM0nVehdy/view?usp=sharing" target="_blank"
-						>Download resume</a
+						>View resume</a
 					>
 				</p>
 			</section>
@@ -137,7 +140,13 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 					{workEntries.map((entry) => (
 						<li>
 							<a href={`/blog/${entry.id}/`}>
-								<img width={720} height={360} src={entry.data.heroImage} alt="" />
+								<Image
+									src={entry.data.heroImage}
+									width={720}
+									height={360}
+									alt={entry.data.title}
+									loading="lazy"
+								/>
 								<h4 class="title">{entry.data.title}</h4>
 								<p class="date">
 									{entry.data.role ? `${entry.data.role} · ` : ''}
@@ -155,7 +164,13 @@ const searchEntries: SearchEntry[] = posts.map((entry) => ({
 					{projectEntries.map((entry) => (
 						<li>
 							<a href={`/blog/${entry.id}/`}>
-								<img width={720} height={360} src={entry.data.heroImage} alt="" />
+								<Image
+									src={entry.data.heroImage}
+									width={720}
+									height={360}
+									alt={entry.data.title}
+									loading="lazy"
+								/>
 								<h4 class="title">{entry.data.title}</h4>
 								<p class="date">
 									{entry.data.role ? `${entry.data.role} · ` : ''}
