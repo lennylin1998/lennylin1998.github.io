@@ -3,7 +3,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, RESUME_URL } from '../consts';
 import { getCollection } from 'astro:content';
 import Button from '../components/ui/Button.astro';
 import { formatDateRange } from '../utils/formatDateRange';
@@ -202,7 +202,7 @@ const filterGroups = [
 					Hi, I'm Lenny! From production systems used by thousands of students
 					 to hackathon projects shipped in days, my work reflects how I approach engineering: learn fast, 
 					 reason deeply, and push projects across the finish line when things get messy.
-					 Find out more details in my <a href="https://drive.google.com/file/d/1a4tEMU1OACw2tOJJp-Oo4fkeL_4rGhsq/view" target="_blank"
+					 Find out more details in my <a href={RESUME_URL} target="_blank"
 						>CV</a>, or start exploring my experience with keywords filtering.
 				</p>
 			</section>
